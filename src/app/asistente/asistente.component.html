@@ -1,0 +1,46 @@
+<div class="mt-3"></div>
+<div class="container border-primary">
+    <div class="card text-center">
+        <div class="card-header text-primary text-center">
+            <h1 class="card-header">
+                {{ titulo }}
+            </h1>
+        </div>
+        <div class="card-body text-primary">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>idEvento</td>
+                        <td>nombre</td>
+                        <td>Apellido</td>
+                        <td>Evento</td>
+                        <td></td>
+                        <td><a routerLink="/asistentesForm/" class="btn btn-primary"> Registrar  </a></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ev of listaDeEventos">
+                        <td>{{ ev.idAsistente }}</td>
+                        <td>{{ ev.nombre }}</td>
+                        <td>{{ ev.paterno }}</td>
+                        <td>{{ ev.evento.descripccionEvento }}</td>
+                        <td>
+                            <a class="btn btn-outline-danger" (click)="eliminarAsistente(ev.idAsistente)">
+                                Eliminar
+                            </a>
+                        </td>
+                        <td>
+                            <a routerLink="/asistentesForm/{{ev.idAsistente}}" class="btn btn-outline-success"> Actualizar </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-primary form-control mt-3" type="button" (click)="descargarPDF()">
+                Obtener reporte
+            </button>
+        </div>
+
+    </div>
+    <a routerLink="/home" class="btn btn-outline-primary mt-3"> Regresar </a>
+</div>
